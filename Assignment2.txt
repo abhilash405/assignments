@@ -1,0 +1,263 @@
+1)create a  class diagram  for a clinic
+( reception,appointment,docor,patient,details form,)
+Identify relations
+ 
+
+Characteristics,datatypes
+2) give me an example of polymorphic methods for a shape (base class)(sphere,cuboid,cube,cylinder)
+for surface area and volume
+
+
+Main class
+
+package javaapplication1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Abhilash
+ */
+public class mainClass {
+    public static void main(String[] args)
+   {
+       boolean x=false;
+        do{
+             x=false;
+        System.out.println("select the shape");
+        Scanner sc = new Scanner(System.in);
+        String shapes= sc.next();
+        switch(shapes){
+            case "sphere": 
+        System.out.println("enter radius");
+        double rad= sc.nextDouble();
+        try{
+        shape sh = new sphere(rad);
+        System.out.println("Surface Area: "+sh.getArea());
+        System.out.println("Volume: "+sh.getVolume());
+        } catch(IllegalArgumentException e ){
+                System.out.println("values cannot be less than zero");
+                x=true;
+                }
+        break;
+            case "cube":
+        System.out.println("enter side length");
+        double len= sc.nextDouble();
+        try{
+        cube cu = new cube(len);
+        System.out.println("Surface Area: "+cu.getArea());
+        System.out.println("Volume: "+cu.getVolume());
+        }
+         catch(IllegalArgumentException e ){
+         
+                System.out.println("values cannot be less than zero");
+                x=true;
+                }
+        break;        
+            case "cubiod":
+        System.out.println("enter side length");
+        
+        double length= sc.nextDouble();
+        System.out.println("enter side width");
+        double wid= sc.nextDouble();
+        System.out.println("enter side height");
+        double hei= sc.nextDouble();
+        try{
+        Cubiod cub = new Cubiod(length,hei,wid);
+        System.out.println("Surface Area: "+cub.getArea());
+        System.out.println("Volume: "+cub.getVolume());
+        }
+         catch(IllegalArgumentException e ){
+                 System.out.println("values cannot be less than zero");
+                x=true;
+                }
+        break;
+        
+        case "cylinder":
+        System.out.println("enter side radius");
+        double length1= sc.nextDouble();
+        System.out.println("enter side height");
+        double width= sc.nextDouble();
+     try{
+       cylinder c = new cylinder(length1,width);
+        System.out.println("area of cylinder "+c.getArea());
+            System.out.println("volume of cylinder"+ c.getVolume());}
+             catch(IllegalArgumentException e ){
+                 System.out.println("values cannot be less than zero");
+                x=true;
+                }
+        default:
+            System.out.println("shape not recognized");
+        }
+       
+}
+while(x);
+    }
+
+}
+
+
+Sphere class
+
+package javaapplication1;
+import java.lang.Math;
+/**
+ *
+ * @author Abhilash
+ */
+public class sphere  extends shape{
+
+    double r;
+    public sphere(double r){
+        super();
+        if(r<=0){
+            throw new IllegalArgumentException("radius cannot be less than zero");
+        }
+    
+    this.r=r;
+    }
+    public double getArea() {
+        double area= 4*(Math.PI*(r*r));
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return area;
+    }
+    @Override
+    public double getVolume() {
+        double volume= 4/3*(Math.PI*(r*r*r));
+        return volume;
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }    
+}
+
+Cuboid class
+package javaapplication1;
+
+/**
+ *
+ * @author Abhilash
+ */
+public class Cubiod  extends shape{
+    double l;
+    double h;
+    double w;
+
+    public Cubiod(double l, double h, double w) {
+        if(h<=0 || l<=0 || w<=0 ){
+            throw new IllegalArgumentException("values cannot be less than zero");
+        }
+        this.l = l;
+        this.h = h;
+        this.w = w;
+    }
+    
+    @Override
+    public double getArea() {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       double area= 2*(l*w+l*h+h*w);
+       return area;
+    }
+
+    @Override
+    public double getVolume() {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       double volume = l*w*h;
+       return volume;
+    }
+    
+}
+
+
+Cube class
+package javaapplication1;
+
+/**
+ *
+ * @author Abhilash
+ */
+public class cube extends shape {
+
+    double x;
+    public cube(double x) {
+        super();
+        if(x<=0){
+            
+            throw new IllegalArgumentException("values cannot be less than zero");
+            
+        }
+        else{
+        
+        
+        }
+        this.x = x;
+    }
+
+    @Override
+    public double getArea() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double area = 6*x*x; 
+        return area;
+    }
+    
+
+    @Override
+    public double getVolume() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double vol = Math.pow(x, 3);
+        return vol;
+    }
+     
+}
+
+Cylinder class
+package javaapplication1;
+
+/**
+ *
+ * @author kavya
+ */
+public class cylinder extends shape{
+ double r;
+ double h;
+    public cylinder(double r, double h) {
+        if(r<=0 || h<=0){
+            throw new IllegalArgumentException("values cannot be less than zero");
+        }
+        else{
+        this.r=r;
+        this.h=h;
+        }
+    }
+    
+
+    @Override
+    public double getArea() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       double area = (2*Math.PI*r*h)+(2*Math.PI*r*r);
+       return area;
+    }
+
+    @Override
+    public double getVolume() {
+       //
+//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       double vol = Math.PI*r*r*h;
+       return vol;
+    
+    }
+    
+}
+
+Shape class
+package javaapplication1;
+
+/**
+ *
+ * @author Abhilash
+ */
+public abstract class shape {
+   
+    public abstract double getArea();
+        
+    public abstract double getVolume();
+    
+}
