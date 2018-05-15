@@ -1,0 +1,127 @@
+1)Take input for two variables x,y and assign the values
+lets suppose x=9,y=4
+now
+x=x+y      //x=13,y=4
+y=x-y      //x=13,y=9
+x=x-y      //x=4,y=9
+
+
+2)
+
+declare an array with numbers
+for a given number 
+initialize the counter to 0
+for the value of i starting from 0 and i less than the lenth of the array check if value of the given number
+is equal to the current value of i.
+if it is equal increment the counter.
+continue the iteration until all the elements of the array are checked.
+finally print the value of counter.
+
+
+
+int a[]={1,2,3,4,5,4,3,5,2,1}
+int x=4;
+
+counter=0;
+for(int i=0;i<a.length();i++)
+{
+  if(a[i]=x)
+	{
+	   counter++;
+	}
+}
+System.out.println(counter);
+
+3)
+start a for loop where i=2,i<=100
+in a inner for loop a from n=2,n<i/2
+if i%n=0 then increment the counter
+after all the iterations if counter is 0 then print that number.
+
+for(i=2;i<=100;i++)
+{
+    for(n=2;n<=i/2;n++)
+	{
+	   if(i%n=0)
+		counter++;
+	}
+ if(counter=0)
+	sop(i);
+}
+
+
+4)
+take n and r inputs
+
+now
+npr=factorial(n)/factorial(n-r)
+
+for factorial we can use the below function
+
+int n;
+int y=1;
+for(int i=1;i<=n;i++)
+{
+ y=y*i;
+ }
+return y;
+
+
+
+
+
+
+5)
+
+import java.util.Scanner;
+public class Sqrt {
+ 
+ public static void main(String[] args)
+ {
+     double t;
+  Scanner Sa = new Scanner(System.in);
+  boolean y;
+  do{
+     y=false;
+     System.out.println("Enter n: ");
+     double n = Sa.nextDouble();
+     if(n>0){
+         double sr= n/2;
+         do{
+             t=sr;
+             sr=(t+(n/t))/2;
+         }while((t-sr)!=0);
+ System.out.println("sqrt of " + n + " is " + (double)Math.round(sr*1000)/1000);
+  }
+  else{
+        System.out.println("enter a valid number greater than zero");
+        y=true;
+  }
+ } while(y);
+
+ }
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
